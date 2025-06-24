@@ -26,6 +26,7 @@ static/
 # Django migrations (optional if you want to ignore auto-generated ones)
 **/migrations/*.pyc
 **/migrations/__pycache__/
+**/migrations/*.py
 # Uncomment if you want to ignore all migration files
 # **/migrations/*.py
 
