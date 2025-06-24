@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+local_settings.py
+.env
+.env.*
+*.env
+
+# Media and static files (optional)
+media/
+staticfiles/
+static/
+
+# Django migrations (optional if you want to ignore auto-generated ones)
+**/migrations/*.pyc
+**/migrations/__pycache__/
+# Uncomment if you want to ignore all migration files
+# **/migrations/*.py
+
+# VS Code and IDE settings
+.vscode/
+.idea/
+
+# Test and coverage
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Virtual environments
+env/
+venv/
+ENV/
+VENV/
+.virtualenv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node stuff (if using React or front-end build)
+n
