@@ -8,6 +8,14 @@ class Fund(models.Model):
         return self.fundName
 
 
+class AccountNumber(models.Model):
+    account = models.CharField(max_length=30)
+    fund = models.ForeignKey(Fund, models.CASCADE, related_name="accountNumber_fund", null=True)
+
+    def __str__(self):
+        return self.account
+
+
 class Office(models.Model):
     officeName = models.CharField(max_length=100)
     officeLocation = models.CharField(max_length=255)
@@ -34,10 +42,9 @@ class Employee(models.Model):
 
 
 class BankRecon(models.Model):
-    accountNumber = models.CharField(max_length=24)
+    accountNumber = models.ForeignKey(AccountNumber, models.CASCADE, related_name="bankRecon_accountNumber")
     asOf = models.DateField()
     amount = models.DecimalField(max_digits=18, decimal_places=2)
-    fund = models.ForeignKey(Fund, models.CASCADE, related_name="bankRecon_fund")
     office = models.ForeignKey(Office, models.CASCADE, related_name="bankRecon_office")
     dateReceived = models.DateTimeField()
     sender = models.ForeignKey(Employee, models.CASCADE, related_name="bankReconSender_employee")
