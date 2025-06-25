@@ -5,9 +5,9 @@ class BankReconSerializer(serializers.ModelSerializer):
     class Meta:
         model = BankRecon
         fields = [
+            'id',
             'accountNumber',
             'asOf',
-            'fund',
             'office',
             'dateReceived',
             'sender',

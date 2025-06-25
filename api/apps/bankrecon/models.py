@@ -1,6 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+class Agency(models.Model):
+    agencyName = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    
+    # createAt = models.DateTimeField(auto_now_add=True)
+    # updatedAt = models.DateTimeField(auto_now=True)
+    # createdBy = models.ForeignKey(User, models.CASCADE, related_name="agencyCreatedBy_user")
+    
+    def __str__(self):
+        return self.agencyName
+    
+
 class Fund(models.Model):
     fundName = models.CharField(max_length=200)
     
@@ -10,7 +23,7 @@ class Fund(models.Model):
 
 class AccountNumber(models.Model):
     account = models.CharField(max_length=30)
-    fund = models.ForeignKey(Fund, models.CASCADE, related_name="accountNumber_fund", null=True)
+    fund = models.ForeignKey(Fund, models.CASCADE, related_name="accountNumber_fund")
 
     def __str__(self):
         return self.account
@@ -18,8 +31,7 @@ class AccountNumber(models.Model):
 
 class Office(models.Model):
     officeName = models.CharField(max_length=100)
-    officeLocation = models.CharField(max_length=255)
-    officeAgency = models.CharField(max_length=255, null=True)
+    officeAgency = models.ForeignKey(Agency, models.CASCADE, related_name="office_agency")
     
     def __str__(self):
         return self.officeName
@@ -52,4 +64,4 @@ class BankRecon(models.Model):
     remarks = models.CharField(max_length=255)
     
     def __str__(self):
-        return self.accountNumber
+        return self.accountNumber.account
