@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from apps.core.models import Fund, Office, Employee
 from apps.core.uuid_generator import generate_custom_id
@@ -10,6 +11,7 @@ class AccountNumber(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.account
@@ -29,10 +31,11 @@ class BankRecon(models.Model):
     dateReceived = models.DateTimeField()
     sender = models.ForeignKey(Employee, models.CASCADE, related_name="bankReconSender_employee")
     receiver = models.ForeignKey(Employee, models.CASCADE, related_name="bankReconReceived_employee")
-    remarks = models.CharField(max_length=255)
+    remarks = models.CharField(max_length=255, blank=True, null=True)
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     
     def __str__(self):
         return self.accountNumber.account

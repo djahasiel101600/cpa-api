@@ -8,4 +8,4 @@ from .models import BankRecon
 class BankReconViewSet(viewsets.ModelViewSet):
     queryset = BankRecon.objects.all()
     serializer_class = BankReconSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
