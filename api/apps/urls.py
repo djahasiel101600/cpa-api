@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from .bankrecon.views import BankReconViewSet
 from .liquidation.views import LiquidationViewSet
-from .rci.views import ReportOfCheckIssuedViewSet, AccountingEntryViewSet, RCIPayeeViewSet
+from .rci.views import *
 from .core.views import *
 
 brs_router = routers.DefaultRouter()
@@ -15,6 +15,7 @@ rci_router = routers.DefaultRouter()
 rci_router.register(r'report-of-check-issued', ReportOfCheckIssuedViewSet)
 rci_router.register(r'accounting-entry', AccountingEntryViewSet)
 rci_router.register(r'rci-payee',RCIPayeeViewSet)
+rci_router.register(r'attachment', AttachmentViewSet)
 
 core_router = routers.DefaultRouter()
 core_router.register(r'agency', AgencyViewSet)

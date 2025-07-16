@@ -56,13 +56,13 @@ class AccountingEntry(models.Model):
             self.id = generate_custom_id()
         super().save(*args, **kwargs)
 
-# class Attachment(models.Model):
-#     id = models.CharField(primary_key=True, max_length=12, editable=False)
-#     rciId = models.ForeignKey(ReportOfCheckIssued, models.CASCADE, related_name="Attachment_ReportOfCheckIssued")
-#     name = models.CharField(max_length=100)
-#     filePath = models.FileField()
+class Attachment(models.Model):
+    id = models.CharField(primary_key=True, max_length=12, editable=False)
+    rciId = models.ForeignKey(ReportOfCheckIssued, models.CASCADE, related_name="Attachment_ReportOfCheckIssued")
+    name = models.CharField(max_length=100)
+    filePath = models.FileField(upload_to='uploads/')
 
-#     def save(self,*args, **kwargs):
-#         if not self.id:
-#             self.id = generate_custom_id()
-#         super().save(*args, **kwargs)
+    def save(self,*args, **kwargs):
+        if not self.id:
+            self.id = generate_custom_id()
+        super().save(*args, **kwargs)
