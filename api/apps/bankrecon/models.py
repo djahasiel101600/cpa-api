@@ -11,7 +11,7 @@ class AccountNumber(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="AccountNumber_User")
 
     def __str__(self):
         return self.account
@@ -35,7 +35,7 @@ class BankRecon(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="BankRecon_User")
     
     def __str__(self):
         return self.accountNumber.account

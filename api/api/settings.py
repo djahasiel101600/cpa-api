@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.bankrecon',
     'apps.liquidation',
-    'apps.core'
+    'apps.core',
+    'apps.rci'
 ]
 
 MIDDLEWARE = [

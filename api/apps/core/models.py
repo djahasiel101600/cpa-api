@@ -9,7 +9,7 @@ class Agency(models.Model):
     
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Agency_User")
     
     def __str__(self):
         return self.agencyName
@@ -26,7 +26,7 @@ class Fund(models.Model):
     
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Fund_User")
     
     def __str__(self):
         return self.fundName
@@ -43,7 +43,7 @@ class Office(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Office_User")
     
     def __str__(self):
         return f"{self.officeName} - {self.officeAgency}"
@@ -60,7 +60,7 @@ class Position(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Position_User")
     
     def __str__(self):
         return self.positionName
@@ -79,7 +79,7 @@ class Employee(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Employee_User")
     
     def __str__(self):
         return f"{self.firstName} - {self.position}"
@@ -92,15 +92,15 @@ class Employee(models.Model):
 
 class ExpenditureCode(models.Model):
     id = models.CharField(primary_key=True, max_length=12, editable=False)
-    objectCode = models.IntegerField()
-    description = models.CharField(max_length=255)
+    objectCode = models.CharField(max_length=10)
+    description = models.CharField(max_length=255, unique=True)
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="ExpindetureCode_User")
     
     def __str__(self):
-        return str(self.objectCode)
+        return str(self.description)
     
     def save(self,*args, **kwargs):
         if not self.id:

@@ -12,7 +12,7 @@ class Payee(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Payee_User")
     
     def __str__(self):
         return f"{self.firstName} {self.lastName}"
@@ -41,7 +41,7 @@ class Liquidation(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Liquidation_User")
     
     def __str__(self):
         return f"{self.payee.firstName} {self.payee.lastName}"
@@ -58,7 +58,7 @@ class LiquidationAttachment(models.Model):
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="LiquidationAttachment_User")
     
     def __str__(self):
         return self.attachmentName
