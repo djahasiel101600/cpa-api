@@ -1,0 +1,3 @@
+1. Make the overall functionality to have an entry point where the User
+can upload a pdf file and the system will try to recognize the text inside the file
+by utilizing the OCR API/Module and then copy pasting all the data to the entry form.
