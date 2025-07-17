@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'apps.liquidation',
     'apps.core',
     'apps.rci',
-    'apps.iar'
+    'apps.iar',
 ]
 
 MIDDLEWARE = [
