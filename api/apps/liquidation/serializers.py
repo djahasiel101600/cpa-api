@@ -5,6 +5,7 @@ class LiquidationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Liquidation
         fields = [
+            'id',
             'transactionDate',
             'payee',
             'checkNumber',

@@ -4,7 +4,7 @@ from .models import ReportOfCheckIssued, AccountingEntry, RCIPayee, Attachment
 class ReportOfCheckIssuedSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReportOfCheckIssued
-        fields = "id,dvNo,checkDate,payee,natureOfTransaction,amountNetOfTax,grossAmount,remarks".split(",")
+        fields = '__all__'
 
 class AccountingEntrySerializer(serializers.ModelSerializer):
     class Meta:

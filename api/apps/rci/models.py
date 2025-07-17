@@ -23,7 +23,7 @@ class RCIPayee(models.Model):
 
 
 class ReportOfCheckIssued(models.Model):
-    id = models.IntegerField(primary_key=True, editable=False)
+    id = models.IntegerField(primary_key=True, editable=True)
     dvNo = models.CharField(max_length=16)
     checkDate = models.DateField()
     asaNo = models.CharField(max_length=24, null=True, blank=True)
@@ -39,6 +39,9 @@ class ReportOfCheckIssued(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
     createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="ReportOfCheckIssued_User")
+
+    def __str__(self):
+        return f"{self.id}"
 
 class AccountingEntry(models.Model):
     id = models.CharField(primary_key=True, max_length=12, editable=False)

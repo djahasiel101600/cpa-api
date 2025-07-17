@@ -10,7 +10,7 @@ from .serializers import AttachmentSerializer
 class ReportOfCheckIssuedViewSet(viewsets.ModelViewSet):
     queryset = ReportOfCheckIssued.objects.all()
     serializer_class = ReportOfCheckIssuedSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.AllowAny]
 
 class AccountingEntryViewSet(viewsets.ModelViewSet):
     queryset = AccountingEntry.objects.all()
