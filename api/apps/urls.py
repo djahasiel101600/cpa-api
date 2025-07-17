@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework import routers
 from .bankrecon.views import BankReconViewSet
 from .liquidation.views import LiquidationViewSet
+from .iar.views import *
 from .rci.views import *
 from .core.views import *
 
@@ -25,9 +26,14 @@ core_router.register(r'position', PositionViewSet)
 core_router.register(r'employee', EmployeeViewSet)
 core_router.register(r'expenditure-code', ExpenditureViewSet)
 
+iar_router = routers.DefaultRouter()
+iar_router.register(r'inspection-acceptance-report', InspectionAcceptanceReportViewSet)
+iar_router.register(r'particular', ParticularViewSet)
+
 urlpatterns = [
     path('brs/', include(brs_router.urls)),
     path('liquidation/', include(liquidation_router.urls)),
     path('rci/', include(rci_router.urls)),
-    path('core/', include(core_router.urls))
+    path('core/', include(core_router.urls)),
+    path('iar/', include(iar_router.urls),)
 ]
