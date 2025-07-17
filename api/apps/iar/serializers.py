@@ -8,5 +8,5 @@ class InspectionAcceptanceReportSerializer(serializers.ModelSerializer):
         
 class ParticularSerializer(serializers.ModelSerializer):
     class Meta:
-        models = Particular
+        model = Particular
         fields = '__all__'
