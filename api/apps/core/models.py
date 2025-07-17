@@ -19,7 +19,6 @@ class Agency(models.Model):
             self.id = generate_custom_id()
         super().save(*args, **kwargs)
     
-
 class Fund(models.Model):
     id = models.CharField(primary_key=True, max_length=12, editable=False)
     fundName = models.CharField(max_length=200)
@@ -53,7 +52,6 @@ class Office(models.Model):
             self.id = generate_custom_id()
         super().save(*args, **kwargs)
 
-
 class Position(models.Model):
     id = models.CharField(primary_key=True, max_length=12, editable=False)
     positionName = models.CharField(max_length=100)
@@ -69,7 +67,6 @@ class Position(models.Model):
         if not self.id:
             self.id = generate_custom_id()
         super().save(*args, **kwargs)
-
 
 class Employee(models.Model):
     id = models.CharField(primary_key=True, max_length=12, editable=False)
@@ -89,7 +86,6 @@ class Employee(models.Model):
             self.id = generate_custom_id()
         super().save(*args, **kwargs)
         
-
 class ExpenditureCode(models.Model):
     id = models.CharField(primary_key=True, max_length=12, editable=False)
     objectCode = models.CharField(max_length=10)
@@ -107,3 +103,7 @@ class ExpenditureCode(models.Model):
             self.id = generate_custom_id()
         super().save(*args, **kwargs)
         
+class Supplier(models.Model):
+    id = models.CharField(primary_key=True, max_length=12, null=False, blank=False)
+    supplierName = models.CharField(max_length=150)
+    supplierAddress = models.CharField(max_length=255)
