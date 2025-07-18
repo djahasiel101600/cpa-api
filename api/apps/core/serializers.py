@@ -1,4 +1,4 @@
-from .models import Agency, Fund, Office, Position, Employee, ExpenditureCode
+from .models import *
 from rest_framework import serializers
 
 class AgencySerializer(serializers.ModelSerializer):
@@ -32,3 +32,7 @@ class ExpenditureCodeSerializer(serializers.ModelSerializer):
         model = ExpenditureCode
         fields = '__all__'
 
+class SupplierSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Supplier
+        fields = '__all__'

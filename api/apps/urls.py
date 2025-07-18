@@ -25,6 +25,7 @@ core_router.register(r'office', OfficeViewSet)
 core_router.register(r'position', PositionViewSet)
 core_router.register(r'employee', EmployeeViewSet)
 core_router.register(r'expenditure-code', ExpenditureViewSet)
+core_router.register(r'supplier', SupplierViewSet)
 
 iar_router = routers.DefaultRouter()
 iar_router.register(r'inspection-acceptance-report', InspectionAcceptanceReportViewSet)

@@ -104,6 +104,18 @@ class ExpenditureCode(models.Model):
         super().save(*args, **kwargs)
         
 class Supplier(models.Model):
-    id = models.CharField(primary_key=True, max_length=12, null=False, blank=False)
+    id = models.CharField(primary_key=True, max_length=12, null=False, blank=False, editable=False)
     supplierName = models.CharField(max_length=150)
     supplierAddress = models.CharField(max_length=255)
+    
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+    createdBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="Supplier_User")
+    
+    def __str__(self):
+        return str(self.supplierName)
+    
+    def save(self,*args, **kwargs):
+        if not self.id:
+            self.id = generate_custom_id()
+        super().save(*args, **kwargs)
