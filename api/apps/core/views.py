@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, authentication
 from .models import *
 from .serializers import *
 from .serializers import *
@@ -8,7 +8,8 @@ from .serializers import *
 class AgencyViewSet(viewsets.ModelViewSet):
     queryset = Agency.objects.all()
     serializer_class = AgencySerializer
-    permission_classes = [permissions.AllowAny]
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
 class FundViewSet(viewsets.ModelViewSet):
     queryset = Fund.objects.all()
