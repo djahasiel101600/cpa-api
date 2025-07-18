@@ -7,9 +7,7 @@ from rest_framework import viewsets, permissions
 class InspectionAcceptanceReportViewSet(viewsets.ModelViewSet):
     queryset = InspectionAcceptanceReport.objects.all()
     serializer_class = InspectionAcceptanceReportSerializer
-    permission_classes = [permissions.AllowAny]
     
 class ParticularViewSet(viewsets.ModelViewSet):
     queryset = Particular.objects.all()
     serializer_class = ParticularSerializer
-    permission_classes = [permissions.AllowAny]

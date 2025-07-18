@@ -10,20 +10,15 @@ from .serializers import AttachmentSerializer
 class ReportOfCheckIssuedViewSet(viewsets.ModelViewSet):
     queryset = ReportOfCheckIssued.objects.all()
     serializer_class = ReportOfCheckIssuedSerializer
-    permission_classes = [permissions.AllowAny]
 
 class AccountingEntryViewSet(viewsets.ModelViewSet):
     queryset = AccountingEntry.objects.all()
     serializer_class = AccountingEntrySerializer
-    permission_classes = [permissions.IsAdminUser]
-
-
+    
 class RCIPayeeViewSet(viewsets.ModelViewSet):
     queryset = RCIPayee.objects.all()
     serializer_class = RCIPayeeSerializer
-    permission_classes = [permissions.IsAdminUser]
 
 class AttachmentViewSet(viewsets.ModelViewSet):
     queryset = Attachment.objects.all()
     serializer_class = AttachmentSerializer
-    permission_classes = [permissions.IsAdminUser]

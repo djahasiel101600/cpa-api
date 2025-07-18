@@ -7,4 +7,3 @@ from rest_framework import viewsets, permissions
 class LiquidationViewSet(viewsets.ModelViewSet):
     queryset = Liquidation.objects.all()
     serializer_class = LiquidationSerializer
-    permission_classes = [permissions.AllowAny]
