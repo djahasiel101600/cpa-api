@@ -5,6 +5,7 @@ from .liquidation.views import LiquidationViewSet
 from .iar.views import *
 from .rci.views import *
 from .core.views import *
+from .userAuth.views import *
 
 brs_router = routers.DefaultRouter()
 brs_router.register(r'bank-reconciliation', BankReconViewSet)
@@ -37,4 +38,6 @@ urlpatterns = [
     path('rci/', include(rci_router.urls)),
     path('core/', include(core_router.urls)),
     path('iar/', include(iar_router.urls),),
+    path('login/', login_user),
+    path('register/', register_user),
     ]
