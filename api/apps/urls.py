@@ -38,6 +38,9 @@ urlpatterns = [
     path('rci/', include(rci_router.urls)),
     path('core/', include(core_router.urls)),
     path('iar/', include(iar_router.urls),),
-    path('login/', login_user),
-    path('register/', register_user),
+    path('login/', LoginUser.as_view()),
+    path('logout/', LogoutUser.as_view()),
+    path('register/', RegisterUser.as_view()),
+    path('verify-token/', ProtectedView.as_view()),
+    path('user/', UserView.as_view()),
     ]
