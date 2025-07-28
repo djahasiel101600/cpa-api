@@ -5,7 +5,7 @@ from apps.core.uuid_generator import generate_custom_id
 
 # Create your models here.
 class InspectionAcceptanceReport(models.Model):
-    id = models.CharField(primary_key=True, null=False, blank=False)
+    id = models.CharField(primary_key=True, null=False, blank=False, editable=False)
     iarNo = models.CharField(max_length=16, null=False, blank=False)
     supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True, blank=True, related_name="IAR_Supplier")
     iarDate = models.DateField()
@@ -14,10 +14,11 @@ class InspectionAcceptanceReport(models.Model):
     dateReceivedOfficer = models.CharField(max_length=100)
     dateAcceptance = models.CharField(max_length=100)
     dateInspection = models.CharField(max_length=100)
-    dateReceivedCoa = models.DateField()
+    dateReceivedCoa = models.DateTimeField()
     receivedBy = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True, related_name="IARReceivedBy_Employee")
     submittedBy = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True, related_name="IARSubmittedBy_Employee")
     office = models.ForeignKey(Office, on_delete=models.SET_NULL, null=True, blank=True, related_name="IAR_Office")
+    remarks = models.TextField(max_length=255, null=True, blank=True)
     
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
@@ -29,6 +30,7 @@ class InspectionAcceptanceReport(models.Model):
     def save(self,*args, **kwargs):
         if not self.id:
             self.id = generate_custom_id()
+            
         super().save(*args, **kwargs)
     
     

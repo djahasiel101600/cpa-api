@@ -4,7 +4,7 @@ from rest_framework import serializers
 class AgencySerializer(serializers.ModelSerializer):
     class Meta:
         model = Agency
-        fields = '__all__'
+        fields = ['id', 'agencyName', 'address']
 
 
 class FundSerializer(serializers.ModelSerializer):
@@ -13,9 +13,10 @@ class FundSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OfficeSerializer(serializers.ModelSerializer):
+    officeAgency = AgencySerializer()
     class Meta:
         model = Office
-        fields = '__all__'
+        fields = ['id', 'officeName', 'officeAgency']
 
 class PositionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,4 +36,4 @@ class ExpenditureCodeSerializer(serializers.ModelSerializer):
 class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier
-        fields = '__all__'
+        fields = ['id', 'supplierName', 'supplierAddress']
