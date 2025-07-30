@@ -3,14 +3,29 @@ from rest_framework import serializers
 from apps.core.serializers import OfficeSerializer, SupplierSerializer, EmployeeSerializer
 
 class InspectionAcceptanceReportSerializer(serializers.ModelSerializer):
-    office = OfficeSerializer()
-    supplier = SupplierSerializer()
-    receivedBy = EmployeeSerializer()
-    submittedBy = EmployeeSerializer()
+    office = serializers.StringRelatedField()
+    supplier = serializers.StringRelatedField()
+    receivedBy = serializers.StringRelatedField()
+    submittedBy = serializers.StringRelatedField()
     
     class Meta:
         model = InspectionAcceptanceReport
-        fields = '__all__'
+        fields = [
+            'id',
+            'iarNo',
+            'supplier',
+            'iarDate',
+            'salesInvoiceNo',
+            'dateInvoice',
+            'dateReceivedOfficer',
+            'dateAcceptance',
+            'dateInspection',
+            'dateReceivedCoa',
+            'receivedBy',
+            'submittedBy',
+            'office',
+            'remarks',
+        ]
         read_only_fields = ['createdBy', 'createdAt', 'updatedAt']
         
 class ParticularSerializer(serializers.ModelSerializer):
