@@ -3,10 +3,10 @@ from rest_framework import serializers
 from apps.core.serializers import OfficeSerializer, SupplierSerializer, EmployeeSerializer
 
 class InspectionAcceptanceReportSerializer(serializers.ModelSerializer):
-    office = OfficeSerializer()
-    supplier = SupplierSerializer()
-    receivedBy = EmployeeSerializer()
-    submittedBy = EmployeeSerializer()
+    office = OfficeSerializer(read_only=True, many=True)
+    supplier = SupplierSerializer(read_only=True, many=True)
+    receivedBy = EmployeeSerializer(read_only=True, many=True)
+    submittedBy = EmployeeSerializer(read_only=True, many=True)
     
     class Meta:
         model = InspectionAcceptanceReport
